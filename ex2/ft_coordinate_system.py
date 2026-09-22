@@ -1,30 +1,32 @@
+#!/usr/bin/env python3
+
 import math
 
-# Authorized: import math, math.sqrt(), input(), round(), print()
-
-# TODO Get a first set of coordinates
-# TODO Display the tuple then display each coordinate separately
-# TODO Calculate the distance to the 3D center (0, 0, 0) (see below)
-# TODO Get a new set of coordinates
-# TODO Calculate the distance between the second and the first sets of coordinates
-
 def main() -> None:
+    center = (0.0, 0.0, 0.0)
+
     print("=== Game Coordinate System ===")
     print()
     print("Get first set of coordinates")
     p1 = get_player_pos()
     print(f"Got a first tuple: {p1}")
     print(f"It includes: X={p1[0]}, Y={p1[1]}, Z={p1[2]}")
-
+    print(
+            "Distance to center: "
+            f"{round(calculate_distance(p1, center), 4)}"
+            )
     print()
     print("Get second set of coordinates")
     p2 = get_player_pos()
-
-# O quadrado da hipotenusa é meu pau que te lambusa
+    print(
+            "Distance between the 2 sets of coordinates: "
+            f"{round(calculate_distance(p1, p2), 4)}"
+            )
 
 def get_player_pos() -> tuple[float, float, float]:
     while True:
         pos = ()
+
         coordinates = input(
                 "Enter new coordinates as floats in format 'x, y, z': "
                 )
@@ -44,6 +46,11 @@ def get_player_pos() -> tuple[float, float, float]:
             break
     return pos
 
+def calculate_distance(
+        p1: tuple[float, float, float], 
+        p2: tuple[float, float, float]
+        ) -> float:
+    return math.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2 + (p2[2]-p1[2])**2)
 
 if __name__ == "__main__":
     main()
