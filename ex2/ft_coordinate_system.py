@@ -23,6 +23,7 @@ def main() -> None:
             f"{round(calculate_distance(p1, p2), 4)}"
             )
 
+
 def get_player_pos() -> tuple[float, float, float]:
     while True:
         pos = ()
@@ -45,6 +46,7 @@ def get_player_pos() -> tuple[float, float, float]:
         if len(pos) == 3:
             break
     return pos
+
 
 def calculate_distance(
         p1: tuple[float, float, float], 
