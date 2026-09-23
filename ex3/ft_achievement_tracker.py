@@ -2,6 +2,7 @@
 
 from random import randint
 
+
 ACHIEVEMENTS = (
             'Boss Slayer',
             'Collector Supreme',
@@ -18,6 +19,7 @@ ACHIEVEMENTS = (
             'Unstoppable',
             'World Savior'
             )
+
 
 def main() -> None:
     print("=== Achievement Tracker System ===")
@@ -46,8 +48,8 @@ def main() -> None:
     print(f"Dylan is missing: {set(ACHIEVEMENTS).difference(dylan)}")
 
 
-def gen_player_achievement(amount: int) -> set:
-    player_achievements = set()
+def gen_player_achievement(amount: int) -> set[str]:
+    player_achievements: set[str] = set()
 
     while len(player_achievements) < amount:
         player_achievements.add(

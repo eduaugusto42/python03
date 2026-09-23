@@ -2,6 +2,7 @@
 
 import math
 
+
 def main() -> None:
     center = (0.0, 0.0, 0.0)
 
@@ -26,7 +27,7 @@ def main() -> None:
 
 def get_player_pos() -> tuple[float, float, float]:
     while True:
-        pos = ()
+        pos: list[float] = []
 
         coordinates = input(
                 "Enter new coordinates as floats in format 'x, y, z': "
@@ -37,7 +38,7 @@ def get_player_pos() -> tuple[float, float, float]:
             continue
         for value in values:
             try:
-                pos = pos + (float(value),)
+                pos.append(float(value))
             except ValueError:
                 print(
                         f"Error on parameter '{value}': "
@@ -45,14 +46,15 @@ def get_player_pos() -> tuple[float, float, float]:
                         )
         if len(pos) == 3:
             break
-    return pos
+    return (pos[0], pos[1], pos[2])
 
 
 def calculate_distance(
-        p1: tuple[float, float, float], 
+        p1: tuple[float, float, float],
         p2: tuple[float, float, float]
         ) -> float:
     return math.sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2 + (p2[2]-p1[2])**2)
+
 
 if __name__ == "__main__":
     main()
