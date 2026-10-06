@@ -2,6 +2,7 @@
 
 import random
 
+
 def main() -> None:
     players = [
             'Alice',
@@ -19,7 +20,8 @@ def main() -> None:
     scores = {player: random.randint(0, 999) for player in players_title}
     average = round(sum(scores.values()) / len(scores), 2)
     high_scores = {
-            player: scores[player] for player in scores if scores[player] > average
+            player: scores[player] for player in scores
+            if scores[player] > average
             }
 
     print("=== Game Data Alchemist ===")
@@ -31,6 +33,7 @@ def main() -> None:
     print(f"Score dict: {scores}")
     print(f"Score average is {average}")
     print(f"High scores: {high_scores}")
+
 
 if __name__ == "__main__":
     main()
