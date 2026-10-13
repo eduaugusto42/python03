@@ -8,7 +8,7 @@ def main() -> None:
 
     print("=== Game Coordinate System ===")
     print()
-    print("Get first set of coordinates")
+    print("Get a first set of coordinates")
     p1 = get_player_pos()
     print(f"Got a first tuple: {p1}")
     print(f"It includes: X={p1[0]}, Y={p1[1]}, Z={p1[2]}")
@@ -16,8 +16,7 @@ def main() -> None:
             "Distance to center: "
             f"{round(calculate_distance(p1, center), 4)}"
             )
-    print()
-    print("Get second set of coordinates")
+    print("Get a second set of coordinates")
     p2 = get_player_pos()
     print(
             "Distance between the 2 sets of coordinates: "
@@ -30,7 +29,7 @@ def get_player_pos() -> tuple[float, float, float]:
         pos: list[float] = []
 
         coordinates = input(
-                "Enter new coordinates as floats in format 'x, y, z': "
+                "Enter new coordinates as floats in format 'x,y,z': "
                 )
         values = coordinates.split(",")
         if len(values) != 3:
@@ -38,11 +37,11 @@ def get_player_pos() -> tuple[float, float, float]:
             continue
         for value in values:
             try:
-                pos.append(float(value))
+                pos.append(float(value.strip()))
             except ValueError:
                 print(
-                        f"Error on parameter '{value}': "
-                        f"could not convert string to float: '{value}'"
+                        f"Error on parameter '{value.strip()}': "
+                        f"could not convert string to float: '{value.strip()}'"
                         )
         if len(pos) == 3:
             break

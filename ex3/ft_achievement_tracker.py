@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from random import randint
+import random
 
 
 ACHIEVEMENTS = (
@@ -24,13 +24,13 @@ ACHIEVEMENTS = (
 def main() -> None:
     print("=== Achievement Tracker System ===")
     print()
-    alice = gen_player_achievement(randint(1, 14))
+    alice = gen_player_achievements(random.randint(3, 9))
     print(f"Player Alice: {alice}")
-    bob = gen_player_achievement(randint(1, 14))
+    bob = gen_player_achievements(random.randint(3, 9))
     print(f"Player Bob: {bob}")
-    charlie = gen_player_achievement(randint(1, 14))
+    charlie = gen_player_achievements(random.randint(3, 9))
     print(f"Player Charlie: {charlie}")
-    dylan = gen_player_achievement(randint(1, 14))
+    dylan = gen_player_achievements(random.randint(3, 9))
     print(f"Player Dylan: {dylan}")
     print()
     print(f"All distinct achievements: {alice.union(bob, charlie, dylan)}")
@@ -48,12 +48,12 @@ def main() -> None:
     print(f"Dylan is missing: {set(ACHIEVEMENTS).difference(dylan)}")
 
 
-def gen_player_achievement(amount: int) -> set[str]:
+def gen_player_achievements(amount: int) -> set[str]:
     player_achievements: set[str] = set()
 
     while len(player_achievements) < amount:
         player_achievements.add(
-                ACHIEVEMENTS[randint(0, len(ACHIEVEMENTS) - 1)]
+                ACHIEVEMENTS[random.randint(0, len(ACHIEVEMENTS) - 1)]
                 )
     return player_achievements
 

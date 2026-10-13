@@ -9,13 +9,16 @@ def main() -> None:
 
 
 def print_arguments() -> None:
-    lenght = len(sys.argv)
-    if lenght == 1:
+    length: int = len(sys.argv)
+    i: int = 0
+
+    if length == 1:
         print("No arguments provided!")
     else:
-        print(f"Arguments received: {lenght - 1}")
-        for i in range(1, lenght):
+        print(f"Arguments received: {length - 1}")
+        while i < length:
             print(f"Argument {i}: {sys.argv[i]}")
+            i += 1
 
 
 if __name__ == "__main__":
