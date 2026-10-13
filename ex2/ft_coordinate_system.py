@@ -11,11 +11,13 @@ def main() -> None:
     print("Get a first set of coordinates")
     p1 = get_player_pos()
     print(f"Got a first tuple: {p1}")
-    print(f"It includes: X={p1[0]}, Y={p1[1]}, Z={p1[2]}")
+    x, y, z = p1
+    print(f"It includes: X={x}, Y={y}, Z={z}")
     print(
             "Distance to center: "
             f"{round(calculate_distance(p1, center), 4)}"
             )
+    print()
     print("Get a second set of coordinates")
     p2 = get_player_pos()
     print(

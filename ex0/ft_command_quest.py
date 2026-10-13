@@ -10,7 +10,7 @@ def main() -> None:
 
 def print_arguments() -> None:
     length: int = len(sys.argv)
-    i: int = 0
+    i: int = 1
 
     if length == 1:
         print("No arguments provided!")

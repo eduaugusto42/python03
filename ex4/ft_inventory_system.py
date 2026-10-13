@@ -5,32 +5,37 @@ import sys
 
 def main() -> None:
     print("=== Inventory System Analysis ===")
+    if len(sys.argv) == 1:
+        print("Usage: python3 ft_inventory_system.py <item:quantity> ...")
     inventory: dict[str, int] = parse_inventory()
     print(f"Got inventory: {inventory}")
     keys: list[str] = list(inventory.keys())
     print(f"Item list: {keys}")
     total: int = sum(inventory.values())
     print(f"Total quantity of the {len(keys)} items: {total}")
-    if total != 0:
+    if not inventory:
+        print("Inventory is empty.")
+    else:
+        if total != 0:
+            for key in keys:
+                print(
+                    f"Item {key} represents "
+                    f"{round((inventory[key] / total) * 100, 1)}%"
+                )
+        most_item: str = ""
+        most_qty: int = -1
+        least_item: str = ""
+        least_qty: float = float("inf")
         for key in keys:
-            print(
-                f"Item {key} represents "
-                f"{round((inventory[key] / total) * 100, 1)}%"
-            )
-    most_item: str = ""
-    most_qty: int = -1
-    least_item: str = ""
-    least_qty: float = float("inf")
-    for key in keys:
-        qty: int = inventory[key]
-        if qty > most_qty:
-            most_qty = qty
-            most_item = key
-        if qty < least_qty:
-            least_qty = qty
-            least_item = key
-    print(f"Item most abundant: {most_item} with quantity {most_qty}")
-    print(f"Item least abundant: {least_item} with quantity {least_qty}")
+            qty: int = inventory[key]
+            if qty > most_qty:
+                most_qty = qty
+                most_item = key
+            if qty < least_qty:
+                least_qty = qty
+                least_item = key
+        print(f"Item most abundant: {most_item} with quantity {most_qty}")
+        print(f"Item least abundant: {least_item} with quantity {least_qty}")
     inventory.update({"magic_item": 1})
     print(f"Updated inventory: {inventory}")
 

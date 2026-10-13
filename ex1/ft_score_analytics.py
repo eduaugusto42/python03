@@ -7,7 +7,7 @@ def main() -> None:
     if len(scores) == 0:
         print(
                 "No scores provided. "
-                f"Usage: python3 {sys.argv[0]} <score1> <score2> ..."
+                "Usage: python3 ft_score_analytics.py <score1> <score2> ..."
                 )
         return
     print(f"Scores processed: {scores}")

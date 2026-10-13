@@ -11,15 +11,17 @@ ACTIONS: list[str] = [
 
 
 def main() -> None:
-    events: list[tuple[str, str]] = []
     g: typing.Generator[tuple[str, str], None, None] = gen_event()
     print("=== Game Data Stream Processor ===")
     for i in range(1000):
         player, action = next(g)
         print(f"Event {i}: Player {player} did action {action}")
-    events = [next(g) for _ in range(10)]
+    events: list[tuple[str, str]] = [next(g) for _ in range(10)]
     print(f"Built list of 10 events: {events}")
-    for event in consume_event(events):
+    consume_ev: typing.Generator[tuple[str, str], None, None] = (
+        consume_event(events)
+    )
+    for event in consume_ev:
         print(f"Got event from list: {event}")
         print(f"Remains in list: {events}")
 
